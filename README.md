@@ -1,5 +1,5 @@
 # HANGMAN_2019
-deadCL file’s required to play Hangman against DeadLetter using deadCL. 
+deadCL files required to play Hangman against DeadLetter using deadCL. 
 
 
 While the game Hangman may not interest you the principles 
