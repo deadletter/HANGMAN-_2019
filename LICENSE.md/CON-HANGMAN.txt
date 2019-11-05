@@ -1,0 +1,17 @@
+ dld.keyset('NAME_YOURNAME')
+  *Catch-all - libs
+
+  *input,
+        @my_guess.txt
+
+  MATCH;
+        INPUT, COMPARE 'THE_WORD'
+  
+  ELSE;
+	INPUT = NO MATCH
+	
+  POST;
+	[ON-MATCH] on MATCH, ELSE [NO-MATCH]
+	
+
+  *END*

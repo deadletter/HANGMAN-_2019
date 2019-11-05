@@ -1,0 +1,85 @@
+      
+*lib - HANGMAN_2019
+*// Copyright 2019 DeadLetter Partners, Version 1.04  //*
+*// To play Hangman don't forget to add the appropriate text template (repository.deadletter.io/resources/HANGMAN.txt) or write your own.//* 
+
+HANGMAN;
+	@ID_HANGMAN.TXT
+	{
+	DRAW-STAGES;
+		#00, #01, #02, #03, #04, #05, #06, #07 
+
+	DRAW-NORMAL;
+		#20, #21, #22, #23, #24, #25, #26, #27
+	}
+
+LAYOUT;
+	@ID_HANGMAN.TXT
+	{#20, #21, #22, #23, #24, #25, #26, #27, #28, #29, #30, #31, #32, #33, #34, #35, #36, #37, #38, #39}
+
+
+RESET;
+	^FLUSH
+
+HANGED;
+	DRAW-STAGES -- SMALLEST TO LARGEST, [bnd _VAL #01 -- #07]
+
+WORDS;
+	LIST, ALL -- @ID_ DAW_2019 AS '$_WRD*'
+	{DRP _all -- .LTO '8' LETTERS,
+	 DRP _all -- .GTO '8' LETTERS 
+		SELECT 0, SET AS $_RAMDOM}	
+
+MATCH;
+	$_RAMDOM -- ?divide _ALL .GTO '0'
+	RECORD, LETTERS singularly
+	{
+	 SET _VAL AS; 1, 2, 3, 4, 5, 6, 7, 8, 9 on #35 as 'THE_WORD'	 
+	}
+
+SET;
+ 	$_RAMDOM as 'MATCH'
+
+NO-MATCH;
+	DRAW, LAYOUT -- HANGED
+	{.OVRIDE, CONFLICT;
+		#20, #21, #22, #23, #24, #25, #26, #27, #28}		
+
+ON-MATCH;
+	CHANGE #35 TO ?MATCH FROM 'THE_WORD' 
+	
+
+LETTERS;
+	A a,
+	B b,
+	C c,
+	D d,
+	E e,
+	F f,
+	G g,
+	H h,
+	I i,
+	J j,
+	K k,
+	L l,
+	M m,
+	N n,
+	O o,
+	P p,
+	Q q,
+	R r,
+	S s,
+	T t,
+	U u,
+	V v,
+	W w,
+	X x,
+	Y y,
+	Z z
+	
+
+/recall -- Oxford University Press
+
+*END
+
+
